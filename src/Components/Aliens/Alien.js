@@ -1,15 +1,38 @@
-import randomNumber from '../Helpers/helpers';
+import {randomNumber} from '../Helpers/helpers';
 
 
 class Alien {
     constructor(args){
         this.position = args.position;
-        this.speed = randomNumber(10, 20);
+        this.speed = {
+            x: randomNumber(1, 7),
+            y: randomNumber(1, 7)
+        };
+        this.create = args.create;
     };
+
+    destroyAlien() {
+        this.delete = true;
+    }
 
     render(state){
         // Alien moving
-        
+        this.position.x -= this.speed.x;
+        this.position.y += this.speed.y;
+
+        // Checking for the window edges
+        // Checking the Y axis edges
+        if (this.position.x > state.screen.width) {
+            this.position.x = 0;
+        } else if (this.position.x < 0) {
+            this.position.x = state.screen.width;
+        };
+        // Checking the Y axis edges
+        if (this.position.y > state.screen.height) {
+            this.position.y = 0;
+        } else if (this.position.y < 0) {
+            this.position.y = state.screen.height;
+        }
 
         // Draw alien
         const context = state.context;

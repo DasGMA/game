@@ -1,5 +1,7 @@
 import React, {Component } from 'react';
 import Spaceship from './Components/Spaceship/Spaceship';
+import Alien from './Components/Aliens/Alien';
+import {randomNumber}  from './Components/Helpers/helpers';
 
 const KEYS = {
   UP: 38,
@@ -31,11 +33,12 @@ class App extends Component{
         right: 0,
         space: 0
       },
+      aliens: 10,
     }
     
     this.spaceship = [];
     this.bullets = [];
-    //this.aliens = [];
+    this.aliens = [];
   }
 
   componentDidMount(){
@@ -97,6 +100,22 @@ class App extends Component{
 
     this.createObject('spaceship', spaceship);
 
+    this.aliens = [];
+    this.makeAliens(this.state.aliens);
+
+  };
+
+  makeAliens(numberValue){
+    for (let i = 0; i < numberValue; i++){
+      let alien = new Alien({
+        position: {
+          x: randomNumber(0, this.state.screen.width),
+          y: randomNumber(0, this.state.screen.height)
+        },
+        create: this.createObject.bind(this),
+      });
+      this.createObject('aliens', alien);
+    };
   };
 
   gameOver = () => {
@@ -120,9 +139,14 @@ class App extends Component{
     context.fillRect(0, 0, this.state.screen.width, this.state.screen.height);
     context.globalAlpha = 1;
 
+    // More aliens
+    if (this.aliens.length === 0){
+      this.makeAliens(this.state.aliens);
+    }
+
     this.updateObjects('spaceship', this.spaceship);
     this.updateObjects('bullets', this.bullets);
-    //this.updateObjects('aliens', this.aliens)
+    this.updateObjects('aliens', this.aliens)
 
     context.restore();
 
