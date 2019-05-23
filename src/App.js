@@ -34,6 +34,7 @@ class App extends Component{
     }
     
     this.spaceship = [];
+    this.bullet = [];
   }
 
   componentDidMount(){
@@ -103,8 +104,6 @@ class App extends Component{
 
   update = () => {
     const context = this.state.context;
-    const spaceship = this.spaceship[0];
-    const key = this.state.keys;
     
     context.save();
     context.scale(this.state.screen.resize, this.state.screen.resize);
@@ -115,6 +114,7 @@ class App extends Component{
     context.globalAlpha = 1;
 
     this.updateObjects('spaceship', this.spaceship);
+    this.updateObjects('bullet', this.bullet);
 
     context.restore();
 

@@ -1,3 +1,5 @@
+import Bullet from '../Bullet/Bullet';
+
 
 class Spaceship {
     constructor(args){
@@ -16,22 +18,24 @@ class Spaceship {
         };
         if (state.keys.down){
             // Moving down
-            console.log('Down')
-            this.position.y += this.moveSpeed
+            console.log('Down');
+            this.position.y += this.moveSpeed;
         };
         if (state.keys.left){
             // Moving left
             console.log('Left');
-            this.position.x -= this.moveSpeed
+            this.position.x -= this.moveSpeed;
         };
         if (state.keys.right){
             // Moving right
             console.log('Right');
-            this.position.x += this.moveSpeed
+            this.position.x += this.moveSpeed;
         };
         if (state.keys.space){
             // Down
-            console.log('Shooting')
+            console.log('Shooting');
+            const bullet = new Bullet({ spaceship: this });
+            this.create('bullet', bullet);
         };
 
         // Checking for the window edges
