@@ -1,0 +1,60 @@
+
+class Spaceship {
+    constructor(args){
+        this.position = args.position;
+        this.create = args.create;
+        this.moveSpeed = 5;
+    }
+
+    render(state){
+
+        // Movement
+        if (state.keys.up){
+            // Moving up
+            console.log('Up');
+            this.position.y -= this.moveSpeed
+        };
+        if (state.keys.down){
+            // Moving down
+            console.log('Down')
+            this.position.y += this.moveSpeed
+        };
+        if (state.keys.left){
+            // Moving left
+            console.log('Left');
+            this.position.x -= this.moveSpeed
+        };
+        if (state.keys.right){
+            // Moving right
+            console.log('Right');
+            this.position.x += this.moveSpeed
+        };
+        if (state.keys.space){
+            // Down
+            console.log('Shooting')
+        };
+
+        // Drawing spaceship
+        const context = state.context;
+
+        context.save();
+        context.translate(this.position.x, this.position.y);
+        context.strokeStyle = '#fff';
+        context.fillStyle = '#000';
+        context.lineWidth = 2;
+        context.beginPath();
+        context.moveTo(0, 0);
+        context.lineTo(-25, 50);
+        context.lineTo(25, 50);
+        context.closePath();
+        context.fill();
+        context.stroke();
+        context.restore();
+
+    }
+
+    
+
+}
+
+export default Spaceship;
