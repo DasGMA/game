@@ -33,10 +33,10 @@ class Spaceship {
             this.position.x += this.moveSpeed;
         };
         if (state.keys.space && Date.now() - this.shot > 400){
-            // Down
+            // Shooting added timer so bullets are spaced out
             console.log('Shooting');
             let bullet = new Bullet({ spaceship: this });
-            this.create('bullet', bullet);
+            this.create('bullets', bullet);
             this.shot = Date.now();
         };
 

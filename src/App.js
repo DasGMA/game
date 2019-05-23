@@ -34,7 +34,8 @@ class App extends Component{
     }
     
     this.spaceship = [];
-    this.bullet = [];
+    this.bullets = [];
+    //this.aliens = [];
   }
 
   componentDidMount(){
@@ -49,7 +50,13 @@ class App extends Component{
 
     this.startGame();
     requestAnimationFrame(() => {this.update()}); 
-  }
+  };
+
+  componentWillUnmount() {
+    window.removeEventListener('keyup', this.handleDirections);
+    window.removeEventListener('keydown', this.handleDirections);
+    window.removeEventListener('resize', this.screenResize);
+  };
 
   screenResize(value, event) {
     this.setState({
@@ -114,7 +121,8 @@ class App extends Component{
     context.globalAlpha = 1;
 
     this.updateObjects('spaceship', this.spaceship);
-    this.updateObjects('bullet', this.bullet);
+    this.updateObjects('bullets', this.bullets);
+    //this.updateObjects('aliens', this.aliens)
 
     context.restore();
 

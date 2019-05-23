@@ -8,9 +8,18 @@ class Bullet {
         this.speed = 5;
     }
 
+    destroyBullet() {
+        this.delete = true;
+    }
+
     render(state){
         // Moving bullet vertically from the shot point
         this.position.y -= this.speed;
+
+        // Check for the Y edge at the top
+        if (this.position.y > state.screen.height) {
+            this.destroyBullet();
+        }
 
         const context = state.context;
 
