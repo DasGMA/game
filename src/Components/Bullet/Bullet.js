@@ -5,12 +5,11 @@ class Bullet {
             x: args.spaceship.position.x,
             y: args.spaceship.position.y
         };
-        this.speed = 6;
+        this.speed = 5;
     }
 
     render(state){
-        // Moving bullet
-        this.position.x -= this.speed;
+        // Moving bullet vertically from the shot point
         this.position.y -= this.speed;
 
         const context = state.context;
@@ -19,7 +18,7 @@ class Bullet {
         context.save();
         context.translate(this.position.x, this.position.y);
         context.fillStyle = '#fff';
-        context.lineWidth = 0.5;
+        context.lineWidth = 1;
         context.beginPath();
         context.arc(0, 0, 2, 0, 2 * Math.PI);
         context.closePath();

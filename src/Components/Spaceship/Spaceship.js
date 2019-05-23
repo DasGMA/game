@@ -6,6 +6,7 @@ class Spaceship {
         this.position = args.position;
         this.create = args.create;
         this.moveSpeed = 5;
+        this.shot = 0;
     }
 
     render(state){
@@ -31,11 +32,12 @@ class Spaceship {
             console.log('Right');
             this.position.x += this.moveSpeed;
         };
-        if (state.keys.space){
+        if (state.keys.space && Date.now() - this.shot > 400){
             // Down
             console.log('Shooting');
-            const bullet = new Bullet({ spaceship: this });
+            let bullet = new Bullet({ spaceship: this });
             this.create('bullet', bullet);
+            this.shot = Date.now();
         };
 
         // Checking for the window edges
