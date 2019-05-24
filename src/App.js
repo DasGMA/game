@@ -48,7 +48,6 @@ class App extends Component{
     });
 
     this.startGame();
-    playSound(space);
     requestAnimationFrame(() => {this.update()}); 
   };
 
@@ -106,7 +105,7 @@ class App extends Component{
     this.makeStars(this.state.stars);
 
     // Theme music
-    
+    playSound(space);
   };
 
   makeStars(numberValue){

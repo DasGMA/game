@@ -15,7 +15,7 @@ class Spaceship {
     destroy(){
         this.delete = true;
         this.die();
-        playSound(deathSound);
+        playSound(deathSound);   
     };
 
     render(state){

@@ -1,5 +1,5 @@
-import {randomNumber} from '../Helpers/helpers';
-
+import {randomNumber, playSound} from '../Helpers/helpers';
+import alienDeath from '../Sounds/Aliens/alienDeath.mp3';
 
 class Alien {
     constructor(props){
@@ -16,7 +16,8 @@ class Alien {
 
     destroy() {
         this.delete = true;
-        this.addPoints(this.points); 
+        this.addPoints(this.points);
+        playSound(alienDeath);
     }
 
     render(state){
