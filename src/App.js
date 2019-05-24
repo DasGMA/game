@@ -155,9 +155,10 @@ class App extends Component{
     context.globalAlpha = 1;
 
     // More aliens
-    if (this.aliens.length === 0){
-      this.makeAliens(this.state.aliens);
-    }
+    /* if (!this.aliens.length){
+      let newAliens = this.state.aliens + 1;
+      this.makeAliens(newAliens);
+    }; */
 
     this.updateObjects('spaceship', this.spaceship);
     this.updateObjects('bullets', this.bullets);

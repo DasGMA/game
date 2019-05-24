@@ -3,7 +3,7 @@ import { randomNumber } from '../Helpers/helpers';
 class Star {
     constructor(props){
         this.position = props.position;
-        this.speed = 3;
+        this.speed = 1;
         this.create = props.create;
     }
 
@@ -15,10 +15,7 @@ class Star {
         // Checking the Y axis edges
         if (this.position.y > state.screen.height) {
             this.position.y = 0;
-        } else if (this.position.y < 0) {
-            this.position.y = state.screen.height;
         };
-
         // Draw a star
         const context = state.context;
 
@@ -27,7 +24,7 @@ class Star {
         context.fillStyle = 'hsl(' + 360 * Math.random() + ', 50%, 50%)';
         context.lineWidth = 1;
         context.beginPath();
-        context.arc(0, 0, randomNumber(3, 10), 0, 2 * Math.PI);
+        context.arc(0, 0, 4, 0, 2 * Math.PI);
         context.closePath();
         context.fill();
         context.restore();

@@ -9,6 +9,7 @@ class Alien {
             y: randomNumber(1, 7)
         };
         this.create = props.create;
+        this.radius = 10;
     };
 
     destroyAlien() {
