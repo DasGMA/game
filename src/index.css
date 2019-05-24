@@ -57,7 +57,7 @@ canvas {
   z-index: 1;
   font-size: 2rem;
   font-weight: 100;
-  left: 40%;
+  left: 45%;
   top: 40%;
   text-align: center;
 }
@@ -68,4 +68,14 @@ button {
   border-style: none;
   font-size: 2rem;
   cursor: pointer;
+}
+
+.info {
+  color: #fff;
+  position: absolute;
+  z-index: 1;
+  font-size: 0.9rem;
+  font-weight: 100;
+  left: 5%;
+  top: 5%;
 }

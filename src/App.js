@@ -2,7 +2,7 @@ import React, {Component } from 'react';
 import KEYS from './Components/Keys/keys';
 import Spaceship from './Components/Spaceship/Spaceship';
 import Alien from './Components/Aliens/Alien';
-import {randomNumber}  from './Components/Helpers/helpers';
+import { randomNumber, collisionBetween }  from './Components/Helpers/helpers';
 import Star from './Components/Theme/Stars';
 
 class App extends Component{
@@ -137,7 +137,8 @@ class App extends Component{
 
     if (this.state.currentPoints > this.state.highestPoints){
       this.setState({
-        highestPoints: this.state.currentPoints
+        highestPoints: this.state.currentPoints,
+        currentPoints: 0
       });
     }
   };
@@ -158,8 +159,8 @@ class App extends Component{
     context.globalAlpha = 1;
 
     // Checking the collisions
-    this.collisionBetween(this.spaceship, this.aliens);
-    this.collisionBetween(this.aliens, this.bullets);
+    collisionBetween(this.spaceship, this.aliens);
+    collisionBetween(this.aliens, this.bullets);
 
     // More aliens
     if (!this.aliens.length){
@@ -180,6 +181,8 @@ class App extends Component{
     requestAnimationFrame(() => {this.update()});
   };
 
+  // Checking objects. If object contains destroy() then updating by removing it.
+  // Otherwise rendering
   updateObjects(group, items){
     let index = 0;
     for (let item of items){
@@ -191,37 +194,10 @@ class App extends Component{
       index ++;
     };
   };
-
-  // Now we need to check the collisions for the specific items in the arrays we have
-  collisionBetween(item1, item2){
-    let a = item1.length - 1;
-    let b;
-    for (a; a > -1; --a){
-      b = item2.length - 1;
-      for (b; b > -1; --b){
-        let object1 = item1[a];
-        let object2 = item2[b];
-        if (this.collision(object1, object2)) {
-          object1.destroy();
-          object2.destroy();
-        }
-      }
-    };
-  };
+  
 
   playAgain = () => {
     this.startGame();
-  };
-
-  // This collision function checking for circle collisions
-  collision(item1, item2){
-    let vx = (item1.position.x - item2.position.x);
-    let vy = (item1.position.y - item2.position.y);
-    let length = Math.sqrt(vx * vx + vy * vy);
-    if (length < item1.radius + item2.radius){
-      return true;
-    };
-    return false;
   };
 
   addPoints(points) {
@@ -255,6 +231,7 @@ class App extends Component{
       <div>
       {gameOver}
       <span className = 'current-points'>Current points: {this.state.currentPoints}</span>
+      <span className = 'info'>Arrows or W, S, D, A to move.<br/>SPACE to shoot.</span>
       <span className = 'level'>Level: {this.state.level}</span>
       <span className = 'highest-points'>Highest points: {this.state.highestPoints}</span>
         <canvas 
