@@ -1,5 +1,6 @@
-import Bullet from '../Bullet/Bullet';
-
+import Bullet from '../Weapons/Bullet';
+import { playSound } from '../Helpers/helpers';
+import deathSound from '../Sounds/Spaceship/Death_sound/explode.mp3';
 
 class Spaceship {
     constructor(props){
@@ -14,7 +15,8 @@ class Spaceship {
     destroy(){
         this.delete = true;
         this.die();
-    }
+        playSound(deathSound);
+    };
 
     render(state){
 

@@ -1,4 +1,5 @@
 
+// Function for generating a random number
 export function randomNumber(min, max){
     return Math.floor(Math.random() * (max - min) + min);
 }
@@ -29,4 +30,12 @@ function collision(item1, item2){
         return true;
         };
     return false;
+};
+
+
+// Function for playing sounds
+export function playSound(soundFile){
+    console.log('Sound')
+    let sound = new Audio(soundFile);
+    return sound.play();
 };

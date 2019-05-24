@@ -2,8 +2,9 @@ import React, {Component } from 'react';
 import KEYS from './Components/Keys/keys';
 import Spaceship from './Components/Spaceship/Spaceship';
 import Alien from './Components/Aliens/Alien';
-import { randomNumber, collisionBetween }  from './Components/Helpers/helpers';
+import { randomNumber, collisionBetween, playSound }  from './Components/Helpers/helpers';
 import Star from './Components/Theme/Stars';
+import space from './Components/Sounds/Space/space.mp3';
 
 class App extends Component{
   constructor(props){
@@ -47,6 +48,7 @@ class App extends Component{
     });
 
     this.startGame();
+    playSound(space);
     requestAnimationFrame(() => {this.update()}); 
   };
 
@@ -103,6 +105,8 @@ class App extends Component{
     this.stars = [];
     this.makeStars(this.state.stars);
 
+    // Theme music
+    
   };
 
   makeStars(numberValue){
@@ -154,11 +158,8 @@ class App extends Component{
     context.save();
     context.scale(this.state.screen.resize, this.state.screen.resize);
 
-    context.fillStyle = '#000';
-    context.globalAlpha = 0.7;
     context.fillRect(0, 0, this.state.screen.width, this.state.screen.height);
-    context.globalAlpha = 1;
-
+    
     // Checking the collisions
     collisionBetween(this.spaceship, this.aliens);
     collisionBetween(this.aliens, this.bullets);
@@ -208,7 +209,6 @@ class App extends Component{
       });
     };
   };
-
 
   render(){
     let gameOver;
