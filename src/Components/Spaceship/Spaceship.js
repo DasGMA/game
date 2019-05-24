@@ -7,7 +7,11 @@ class Spaceship {
         this.create = props.create;
         this.moveSpeed = 5;
         this.shot = 0;
-        this.radius = 50;
+        this.radius = 35;
+    }
+
+    destroy(){
+        this.delete = true;
     }
 
     render(state){

@@ -36,6 +36,7 @@ class App extends Component{
       },
       aliens: 10,
       stars: 50,
+      currentPoints: 0,
     }
     
     this.spaceship = [];
@@ -150,15 +151,19 @@ class App extends Component{
     context.scale(this.state.screen.resize, this.state.screen.resize);
 
     context.fillStyle = '#000';
-    context.globalAlpha = 0.4;
+    context.globalAlpha = 0.7;
     context.fillRect(0, 0, this.state.screen.width, this.state.screen.height);
     context.globalAlpha = 1;
 
+    // Checking the collisions
+    this.collisionBetween(this.spaceship, this.aliens);
+    this.collisionBetween(this.aliens, this.bullets);
+
     // More aliens
-    /* if (!this.aliens.length){
+    if (!this.aliens.length){
       let newAliens = this.state.aliens + 1;
       this.makeAliens(newAliens);
-    }; */
+    };
 
     this.updateObjects('spaceship', this.spaceship);
     this.updateObjects('bullets', this.bullets);
@@ -179,13 +184,51 @@ class App extends Component{
         items[index].render(this.state);
       }
       index ++;
-    }
-  }
+    };
+  };
+
+  // Now we need to check the collisions for the specific items in the arrays we have
+  collisionBetween(item1, item2){
+    let a = item1.length - 1;
+    let b;
+    for (a; a > -1; --a){
+      b = item2.length - 1;
+      for (b; b > -1; --b){
+        let object1 = item1[a];
+        let object2 = item2[b];
+        if (this.collision(object1, object2)) {
+          object1.destroy();
+          object2.destroy();
+        }
+      }
+    };
+  };
+
+  playAgain = () => {
+    this.startGame();
+  };
+
+  // This collision function checking for circle collisions
+  collision(item1, item2){
+    let vx = (item1.position.x - item2.position.x);
+    let vy = (item1.position.y - item2.position.y);
+    let length = Math.sqrt(vx * vx + vy * vy);
+    if (length < item1.radius + item2.radius){
+      return true;
+    };
+    return false;
+  };
 
 
   render(){
+    let gameOver;
+    if (!this.state.runningGame){
+      gameOver = (<button>Play again</button>)
+    }
     return(
       <div>
+      {gameOver}
+      <span style={{color: 'white'}}>Current points: {this.state.currentPoints}</span>
         <canvas 
           ref = 'canvas'
           width = {this.state.screen.width * this.state.screen.resize}

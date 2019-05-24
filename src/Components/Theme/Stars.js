@@ -1,4 +1,3 @@
-import { randomNumber } from '../Helpers/helpers';
 
 class Star {
     constructor(props){
@@ -8,7 +7,7 @@ class Star {
     }
 
     render(state){
-        // Star movement
+        // Star movement vertically
         this.position.y += this.speed;
 
         // Checking for the window edges

@@ -12,7 +12,7 @@ class Alien {
         this.radius = 10;
     };
 
-    destroyAlien() {
+    destroy() {
         this.delete = true;
     }
 

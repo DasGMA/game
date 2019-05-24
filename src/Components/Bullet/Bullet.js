@@ -9,7 +9,7 @@ class Bullet {
         this.radius = 2;
     }
 
-    destroyBullet() {
+    destroy(){
         this.delete = true;
     }
 
@@ -19,7 +19,7 @@ class Bullet {
 
         // Check for the Y edge at the top
         if (this.position.y > state.screen.height) {
-            this.destroyBullet();
+            this.destroy();
         }
 
         const context = state.context;
