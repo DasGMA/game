@@ -216,9 +216,10 @@ class App extends Component{
 
     if (this.state.currentPoints === 0) {
       message = 'You have got 0 points. You suck!!!';
-    }
-    if (this.state.currentPoints > this.state.highestPoints){
+    } else if (this.state.currentPoints >= this.state.highestPoints){
       message = `Not too bad, you have got ${this.state.highestPoints}. Top score!!`
+    } else {
+      message = 'You can do better than that!!'
     }
 
     if (!this.state.runningGame){
