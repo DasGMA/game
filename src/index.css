@@ -30,7 +30,7 @@ canvas {
   z-index: 1;
   font-size: 2rem;
   font-weight: 100;
-  left: 10%;
+  left: 5%;
 }
 
 .level {
@@ -39,5 +39,14 @@ canvas {
   z-index: 1;
   font-size: 2rem;
   font-weight: 100;
-  left: 30%;
+  left: 50%;
+}
+
+.highest-points {
+  color: white;
+  position: absolute;
+  z-index: 1;
+  font-size: 2rem;
+  font-weight: 100;
+  left: 81%;
 }

@@ -38,6 +38,7 @@ class App extends Component{
       stars: 50,
       currentPoints: 0,
       level: 1,
+      highestPoints: 0
     }
     
     this.spaceship = [];
@@ -141,6 +142,12 @@ class App extends Component{
     this.setState({
       runningGame: false
     });
+
+    if (this.state.currentPoints > this.state.highestPoints){
+      this.setState({
+        highestPoints: this.state.currentPoints
+      });
+    }
   };
 
   createObject (group, item) {
@@ -244,6 +251,7 @@ class App extends Component{
       {gameOver}
       <span className = 'current-points'>Current points: {this.state.currentPoints}</span>
       <span className = 'level'>Level: {this.state.level}</span>
+      <span className = 'highest-points'>Highest points: {this.state.highestPoints}</span>
         <canvas 
           ref = 'canvas'
           width = {this.state.screen.width * this.state.screen.resize}
