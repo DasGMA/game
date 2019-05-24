@@ -37,6 +37,7 @@ class App extends Component{
       aliens: 10,
       stars: 50,
       currentPoints: 0,
+      level: 1,
     }
     
     this.spaceship = [];
@@ -165,6 +166,9 @@ class App extends Component{
     if (!this.aliens.length){
       let newAliens = this.state.aliens + 1;
       this.makeAliens(newAliens);
+      this.setState({
+        level: this.state.level + 1
+      })
     };
 
     this.updateObjects('spaceship', this.spaceship);
@@ -239,6 +243,7 @@ class App extends Component{
       <div>
       {gameOver}
       <span className = 'current-points'>Current points: {this.state.currentPoints}</span>
+      <span className = 'level'>Level: {this.state.level}</span>
         <canvas 
           ref = 'canvas'
           width = {this.state.screen.width * this.state.screen.resize}
