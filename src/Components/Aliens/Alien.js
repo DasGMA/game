@@ -10,10 +10,13 @@ class Alien {
         };
         this.create = props.create;
         this.radius = 10;
+        this.points = this.speed.x * this.speed.y * 5;
+        this.addPoints = props.addPoints;
     };
 
     destroy() {
         this.delete = true;
+        this.addPoints(this.points); 
     }
 
     render(state){

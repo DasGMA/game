@@ -100,6 +100,7 @@ class App extends Component{
         y: this.state.screen.height/1.2
       },
       create: this.createObject.bind(this),
+      die: this.gameOver.bind(this)
     });
 
     this.createObject('spaceship', spaceship);
@@ -129,12 +130,13 @@ class App extends Component{
           y: randomNumber(0, this.state.screen.height)
         },
         create: this.createObject.bind(this),
+        addPoints: this.addPoints.bind(this)
       });
       this.createObject('aliens', alien);
     };
   };
 
-  gameOver = () => {
+  gameOver() {
     this.setState({
       runningGame: false
     });
@@ -219,6 +221,14 @@ class App extends Component{
     return false;
   };
 
+  addPoints(points) {
+    if (this.state.runningGame){
+      this.setState({
+        currentPoints: this.state.currentPoints + points,
+      });
+    };
+  };
+
 
   render(){
     let gameOver;
@@ -228,7 +238,7 @@ class App extends Component{
     return(
       <div>
       {gameOver}
-      <span style={{color: 'white'}}>Current points: {this.state.currentPoints}</span>
+      <span className = 'current-points'>Current points: {this.state.currentPoints}</span>
         <canvas 
           ref = 'canvas'
           width = {this.state.screen.width * this.state.screen.resize}

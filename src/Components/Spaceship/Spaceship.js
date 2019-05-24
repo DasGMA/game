@@ -8,10 +8,12 @@ class Spaceship {
         this.moveSpeed = 5;
         this.shot = 0;
         this.radius = 35;
+        this.die = props.die;
     }
 
     destroy(){
         this.delete = true;
+        this.die();
     }
 
     render(state){
