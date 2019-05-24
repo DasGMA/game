@@ -94,8 +94,11 @@ class App extends Component{
       die: this.gameOver.bind(this)
     });
 
+    this.aliens = [];
     this.createObject('spaceship', spaceship);
     this.makeAliens(this.state.aliens);
+
+    this.stars = [];
     this.makeStars(this.state.stars);
 
   };
