@@ -1,4 +1,6 @@
 
+import space from '../Sounds/Space/space.mp3';
+
 // Function for generating a random number
 export function randomNumber(min, max){
     return Math.floor(Math.random() * (max - min) + min);
@@ -37,5 +39,6 @@ function collision(item1, item2){
 export function playSound(soundFile){
     console.log('Sound')
     let sound = new Audio(soundFile);
+    if (soundFile === space) sound.loop = true;
     return sound.play();
 };
