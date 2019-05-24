@@ -1,9 +1,9 @@
 
 class Bullet {
-    constructor(args){
+    constructor(props){
         this.position = {
-            x: args.spaceship.position.x,
-            y: args.spaceship.position.y
+            x: props.spaceship.position.x,
+            y: props.spaceship.position.y
         };
         this.speed = 5;
     }

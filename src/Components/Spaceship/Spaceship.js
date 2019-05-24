@@ -2,9 +2,9 @@ import Bullet from '../Bullet/Bullet';
 
 
 class Spaceship {
-    constructor(args){
-        this.position = args.position;
-        this.create = args.create;
+    constructor(props){
+        this.position = props.position;
+        this.create = props.create;
         this.moveSpeed = 5;
         this.shot = 0;
     }
@@ -32,7 +32,7 @@ class Spaceship {
             console.log('Right');
             this.position.x += this.moveSpeed;
         };
-        if (state.keys.space && Date.now() - this.shot > 400){
+        if (state.keys.space && Date.now() - this.shot > 200){
             // Shooting added timer so bullets are spaced out
             console.log('Shooting');
             let bullet = new Bullet({ spaceship: this });

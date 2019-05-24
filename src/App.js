@@ -2,6 +2,7 @@ import React, {Component } from 'react';
 import Spaceship from './Components/Spaceship/Spaceship';
 import Alien from './Components/Aliens/Alien';
 import {randomNumber}  from './Components/Helpers/helpers';
+import Star from './Components/Theme/Stars';
 
 const KEYS = {
   UP: 38,
@@ -34,11 +35,13 @@ class App extends Component{
         space: 0
       },
       aliens: 10,
+      stars: 50,
     }
     
     this.spaceship = [];
     this.bullets = [];
     this.aliens = [];
+    this.stars = [];
   }
 
   componentDidMount(){
@@ -99,11 +102,23 @@ class App extends Component{
     });
 
     this.createObject('spaceship', spaceship);
-
-    this.aliens = [];
     this.makeAliens(this.state.aliens);
+    this.makeStars(this.state.stars);
 
   };
+
+  makeStars(numberValue){
+    for (let i = 0; i < numberValue; i++){
+      let star = new Star({
+        position: {
+          x: randomNumber(0, this.state.screen.width),
+          y: randomNumber(0, this.state.screen.height)
+        },
+        create: this.createObject.bind(this),
+      });
+      this.createObject('stars', star);
+    };
+  }
 
   makeAliens(numberValue){
     for (let i = 0; i < numberValue; i++){
@@ -146,7 +161,8 @@ class App extends Component{
 
     this.updateObjects('spaceship', this.spaceship);
     this.updateObjects('bullets', this.bullets);
-    this.updateObjects('aliens', this.aliens)
+    this.updateObjects('aliens', this.aliens);
+    this.updateObjects('stars', this.stars);
 
     context.restore();
 

@@ -2,13 +2,13 @@ import {randomNumber} from '../Helpers/helpers';
 
 
 class Alien {
-    constructor(args){
-        this.position = args.position;
+    constructor(props){
+        this.position = props.position;
         this.speed = {
             x: randomNumber(1, 7),
             y: randomNumber(1, 7)
         };
-        this.create = args.create;
+        this.create = props.create;
     };
 
     destroyAlien() {
@@ -21,7 +21,7 @@ class Alien {
         this.position.y += this.speed.y;
 
         // Checking for the window edges
-        // Checking the Y axis edges
+        // Checking the X axis edges
         if (this.position.x > state.screen.width) {
             this.position.x = 0;
         } else if (this.position.x < 0) {
