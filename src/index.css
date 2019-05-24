@@ -50,3 +50,22 @@ canvas {
   font-weight: 100;
   left: 81%;
 }
+
+.game-over {
+  color: white;
+  position: absolute;
+  z-index: 1;
+  font-size: 2rem;
+  font-weight: 100;
+  left: 40%;
+  top: 40%;
+  text-align: center;
+}
+
+button {
+  background-color: transparent;
+  color: white;
+  border-style: none;
+  font-size: 2rem;
+  cursor: pointer;
+}

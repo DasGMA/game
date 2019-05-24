@@ -1,20 +1,9 @@
 import React, {Component } from 'react';
+import KEYS from './Components/Keys/keys';
 import Spaceship from './Components/Spaceship/Spaceship';
 import Alien from './Components/Aliens/Alien';
 import {randomNumber}  from './Components/Helpers/helpers';
 import Star from './Components/Theme/Stars';
-
-const KEYS = {
-  UP: 38,
-  DOWN: 40,
-  LEFT: 37,
-  RIGHT: 39,
-  W: 87,
-  S: 83,
-  A: 65,
-  D: 68,
-  SPACE: 32
-}
 
 class App extends Component{
   constructor(props){
@@ -243,8 +232,21 @@ class App extends Component{
 
   render(){
     let gameOver;
+    let message;
+
+    if (this.state.currentPoints === 0) {
+      message = 'You have got 0 points. You suck!!!';
+    }
+    if (this.state.currentPoints > this.state.highestPoints){
+      message = `Not too bad, you have got ${this.state.highestPoints}. Top score!!`
+    }
+
     if (!this.state.runningGame){
-      gameOver = (<button>Play again</button>)
+      gameOver = <div className = 'game-over'>
+                  <p>Game Over</p>
+                  <p>{message}</p>
+                  <button onClick = {this.playAgain}>Play!!!</button>
+                  </div>
     }
     return(
       <div>
