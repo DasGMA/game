@@ -83,6 +83,8 @@ class App extends Component{
   startGame = () => {
     this.setState({
       runningGame: true,
+      currentPoints: 0,
+      level: 1
     });
 
     let spaceship = new Spaceship({
@@ -137,8 +139,7 @@ class App extends Component{
 
     if (this.state.currentPoints > this.state.highestPoints){
       this.setState({
-        highestPoints: this.state.currentPoints,
-        currentPoints: 0
+        highestPoints: this.state.currentPoints
       });
     }
   };
