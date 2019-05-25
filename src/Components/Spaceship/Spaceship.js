@@ -73,7 +73,6 @@ class Spaceship {
         context.translate(this.position.x, this.position.y);
         context.drawImage(this.image, -35, 0);
         context.restore();
-
     }
 
     

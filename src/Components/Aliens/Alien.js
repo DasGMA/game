@@ -1,5 +1,6 @@
 import {randomNumber, playSound} from '../Helpers/helpers';
 import alienDeath from '../Sounds/Aliens/alienDeath.mp3';
+import alien1 from '../Images/Aliens/alien1.png';
 
 class Alien {
     constructor(props){
@@ -9,9 +10,11 @@ class Alien {
             y: randomNumber(1, 7)
         };
         this.create = props.create;
-        this.radius = 10;
+        this.radius = 20;
         this.points = this.speed.x * this.speed.y * 5;
         this.addPoints = props.addPoints;
+        this.image = new Image();
+        this.image.src = alien1;
     };
 
     destroy() {
@@ -44,12 +47,13 @@ class Alien {
 
         context.save();
         context.translate(this.position.x, this.position.y);
-        context.fillStyle = 'red';
+        context.drawImage(this.image, -25, 19);
+        /* context.fillStyle = 'red';
         context.lineWidth = 1;
         context.beginPath();
         context.arc(0, 0, 10, 0, 10*Math.PI);
         context.closePath();
-        context.fill();
+        context.fill(); */
         context.restore();
     }
 }
