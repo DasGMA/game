@@ -49,11 +49,7 @@ class App extends Component{
     });
 
     this.startGame();
-    let galaxy = new Galaxy({
-      create: this.createObject.bind(this)
-    });
-
-    this.createObject('galaxies', galaxy);
+    this.createGalaxy();
     requestAnimationFrame(() => {this.update()}); 
   };
 
@@ -87,14 +83,20 @@ class App extends Component{
     });
   };
 
+  createGalaxy = () => {
+    let galaxy = new Galaxy({
+      create: this.createObject.bind(this)
+    });
+
+    this.createObject('galaxies', galaxy);
+  }
+
   startGame = () => {
     this.setState({
       runningGame: true,
       currentPoints: 0,
       level: 1
     });
-
-    
 
     let spaceship = new Spaceship({
       position: {

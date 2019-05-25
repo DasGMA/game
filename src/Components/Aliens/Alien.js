@@ -6,12 +6,12 @@ class Alien {
     constructor(props){
         this.position = props.position;
         this.speed = {
-            x: randomNumber(1, 7),
-            y: randomNumber(1, 7)
+            x: randomNumber(-7, 7),
+            y: randomNumber(-7, 7)
         };
         this.create = props.create;
-        this.radius = 25;
-        this.points = this.speed.x * this.speed.y * 5;
+        this.radius = 27;
+        this.points = Math.abs(this.speed.x * this.speed.y * 5);
         this.addPoints = props.addPoints;
         this.image = renderImage(alien);
     };
@@ -46,7 +46,7 @@ class Alien {
 
         context.save();
         context.translate(this.position.x, this.position.y);
-        context.drawImage(this.image, -25, 19);
+        context.drawImage(this.image, -20, 14);
         context.restore();
     }
 }
