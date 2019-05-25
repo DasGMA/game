@@ -1,6 +1,7 @@
 import Bullet from '../Weapons/Bullet';
 import { playSound } from '../Helpers/helpers';
 import deathSound from '../Sounds/Spaceship/Death_sound/explode.mp3';
+import spaceship from '../Images/Spaceship/spaceship.png';
 
 class Spaceship {
     constructor(props){
@@ -10,6 +11,8 @@ class Spaceship {
         this.shot = 0;
         this.radius = 35;
         this.die = props.die;
+        this.image = new Image();
+        this.image.src = spaceship;
     }
 
     destroy(){
@@ -68,16 +71,7 @@ class Spaceship {
 
         context.save();
         context.translate(this.position.x, this.position.y);
-        context.strokeStyle = '#fff';
-        context.fillStyle = '#000';
-        context.lineWidth = 2;
-        context.beginPath();
-        context.moveTo(0, 0);
-        context.lineTo(-25, 50);
-        context.lineTo(25, 50);
-        context.closePath();
-        context.fill();
-        context.stroke();
+        context.drawImage(this.image, -35, 0);
         context.restore();
 
     }
