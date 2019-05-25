@@ -68,7 +68,7 @@ class Spaceship {
 
         // Drawing spaceship
         const context = state.context;
-
+        
         context.save();
         context.translate(this.position.x, this.position.y);
         context.drawImage(this.image, -35, 0);

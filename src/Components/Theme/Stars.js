@@ -1,8 +1,7 @@
-
 class Star {
     constructor(props){
         this.position = props.position;
-        this.speed = 1;
+        this.speed = 0.1;
         this.create = props.create;
     }
 
@@ -17,13 +16,13 @@ class Star {
         };
         // Draw a star
         const context = state.context;
-
+        
         context.save();
         context.translate(this.position.x, this.position.y);
         context.fillStyle = 'hsl(' + 360 * Math.random() + ', 50%, 50%)';
         context.lineWidth = 1;
         context.beginPath();
-        context.arc(0, 0, 4, 0, 2 * Math.PI);
+        context.arc(0, 0, 2, 0, 2 * Math.PI);
         context.closePath();
         context.fill();
         context.restore();

@@ -48,12 +48,6 @@ class Alien {
         context.save();
         context.translate(this.position.x, this.position.y);
         context.drawImage(this.image, -25, 19);
-        /* context.fillStyle = 'red';
-        context.lineWidth = 1;
-        context.beginPath();
-        context.arc(0, 0, 10, 0, 10*Math.PI);
-        context.closePath();
-        context.fill(); */
         context.restore();
     }
 }

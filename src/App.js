@@ -5,6 +5,7 @@ import Alien from './Components/Aliens/Alien';
 import { randomNumber, collisionBetween, playSound }  from './Components/Helpers/helpers';
 import Star from './Components/Theme/Stars';
 import space from './Components/Sounds/Space/space.mp3';
+import Galaxy from './Components/Theme/Galaxy';
 
 class App extends Component{
   constructor(props){
@@ -25,7 +26,7 @@ class App extends Component{
         space: 0
       },
       aliens: 10,
-      stars: 50,
+      stars: 100,
       currentPoints: 0,
       level: 1,
       highestPoints: 0
@@ -35,6 +36,7 @@ class App extends Component{
     this.bullets = [];
     this.aliens = [];
     this.stars = [];
+    this.galaxies = [];
   }
 
   componentDidMount(){
@@ -87,6 +89,12 @@ class App extends Component{
       currentPoints: 0,
       level: 1
     });
+
+    let galaxy = new Galaxy({
+      create: this.createObject.bind(this)
+    });
+
+    this.createObject('galaxies', galaxy);
 
     let spaceship = new Spaceship({
       position: {
@@ -172,10 +180,12 @@ class App extends Component{
       })
     };
 
+    this.updateObjects('galaxies', this.galaxies)
+    this.updateObjects('stars', this.stars);
     this.updateObjects('spaceship', this.spaceship);
     this.updateObjects('bullets', this.bullets);
     this.updateObjects('aliens', this.aliens);
-    this.updateObjects('stars', this.stars);
+    
 
     context.restore();
 
