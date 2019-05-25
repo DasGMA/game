@@ -1,6 +1,6 @@
 import {randomNumber, playSound, renderImage} from '../Helpers/helpers';
 import alienDeath from '../Sounds/Aliens/alienDeath.mp3';
-import alien1 from '../Images/Aliens/alien1.png';
+import alien from '../Images/Aliens/alien1.png';
 
 class Alien {
     constructor(props){
@@ -10,10 +10,10 @@ class Alien {
             y: randomNumber(1, 7)
         };
         this.create = props.create;
-        this.radius = 20;
+        this.radius = 25;
         this.points = this.speed.x * this.speed.y * 5;
         this.addPoints = props.addPoints;
-        this.image = renderImage(alien1);
+        this.image = renderImage(alien);
     };
 
     destroy() {

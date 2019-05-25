@@ -2,9 +2,8 @@ import React, {Component } from 'react';
 import KEYS from './Components/Keys/keys';
 import Spaceship from './Components/Spaceship/Spaceship';
 import Alien from './Components/Aliens/Alien';
-import { randomNumber, collisionBetween, playSound }  from './Components/Helpers/helpers';
+import { randomNumber, collisionBetween }  from './Components/Helpers/helpers';
 import Star from './Components/Theme/Stars';
-import space from './Components/Sounds/Space/space.mp3';
 import Galaxy from './Components/Theme/Galaxy';
 
 class App extends Component{
@@ -50,6 +49,11 @@ class App extends Component{
     });
 
     this.startGame();
+    let galaxy = new Galaxy({
+      create: this.createObject.bind(this)
+    });
+
+    this.createObject('galaxies', galaxy);
     requestAnimationFrame(() => {this.update()}); 
   };
 
@@ -90,11 +94,7 @@ class App extends Component{
       level: 1
     });
 
-    let galaxy = new Galaxy({
-      create: this.createObject.bind(this)
-    });
-
-    this.createObject('galaxies', galaxy);
+    
 
     let spaceship = new Spaceship({
       position: {
@@ -111,9 +111,6 @@ class App extends Component{
 
     this.stars = [];
     this.makeStars(this.state.stars);
-
-    // Theme music
-    playSound(space);
   };
 
   makeStars(numberValue){

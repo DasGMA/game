@@ -1,10 +1,12 @@
 import galaxy1 from './galaxy1.jpg';
-import { renderImage } from '../Helpers/helpers';
+import { renderImage, playSound } from '../Helpers/helpers';
+import space from '../Sounds/Space/space.mp3';
 
 class Galaxy {
     constructor(props){
         this.create = props.create;
         this.image = renderImage(galaxy1);
+        this.spaceMusic = playSound(space);
     }
 
     render(state){

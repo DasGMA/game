@@ -39,7 +39,10 @@ function collision(item1, item2){
 export function playSound(soundFile){
     console.log('Sound')
     let sound = new Audio(soundFile);
-    if (soundFile === space) sound.loop = true;
+    if (soundFile === space) {
+        sound.loop = true;
+        sound.volume = 0.7;
+    }   
     return sound.play();
 };
 
