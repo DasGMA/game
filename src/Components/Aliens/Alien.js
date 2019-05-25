@@ -1,4 +1,4 @@
-import {randomNumber, playSound} from '../Helpers/helpers';
+import {randomNumber, playSound, renderImage} from '../Helpers/helpers';
 import alienDeath from '../Sounds/Aliens/alienDeath.mp3';
 import alien1 from '../Images/Aliens/alien1.png';
 
@@ -13,8 +13,7 @@ class Alien {
         this.radius = 20;
         this.points = this.speed.x * this.speed.y * 5;
         this.addPoints = props.addPoints;
-        this.image = new Image();
-        this.image.src = alien1;
+        this.image = renderImage(alien1);
     };
 
     destroy() {

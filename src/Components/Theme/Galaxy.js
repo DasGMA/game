@@ -1,10 +1,10 @@
 import galaxy1 from './galaxy1.jpg';
+import { renderImage } from '../Helpers/helpers';
 
 class Galaxy {
     constructor(props){
         this.create = props.create;
-        this.image = new Image();
-        this.image.src = galaxy1;
+        this.image = renderImage(galaxy1);
     }
 
     render(state){

@@ -1,5 +1,5 @@
 import Bullet from '../Weapons/Bullet';
-import { playSound } from '../Helpers/helpers';
+import { playSound, renderImage } from '../Helpers/helpers';
 import deathSound from '../Sounds/Spaceship/Death_sound/explode.mp3';
 import spaceship from '../Images/Spaceship/spaceship.png';
 
@@ -11,8 +11,7 @@ class Spaceship {
         this.shot = 0;
         this.radius = 35;
         this.die = props.die;
-        this.image = new Image();
-        this.image.src = spaceship;
+        this.image = renderImage(spaceship);
     }
 
     destroy(){

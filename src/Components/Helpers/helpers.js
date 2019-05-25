@@ -42,3 +42,11 @@ export function playSound(soundFile){
     if (soundFile === space) sound.loop = true;
     return sound.play();
 };
+
+// Function for the image rendering
+
+export function renderImage(imageSource){
+    let image = new Image();
+    image.src = imageSource;
+    return image;
+}
