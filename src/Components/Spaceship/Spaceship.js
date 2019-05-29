@@ -25,27 +25,22 @@ class Spaceship {
         // Movement
         if (state.keys.up){
             // Moving up
-            console.log('Up');
             this.position.y -= this.moveSpeed
         };
         if (state.keys.down){
             // Moving down
-            console.log('Down');
             this.position.y += this.moveSpeed;
         };
         if (state.keys.left){
             // Moving left
-            console.log('Left');
             this.position.x -= this.moveSpeed;
         };
         if (state.keys.right){
             // Moving right
-            console.log('Right');
             this.position.x += this.moveSpeed;
         };
         if (state.keys.space && Date.now() - this.shot > 200){
             // Shooting added timer so bullets are spaced out
-            console.log('Shooting');
             let bullet = new Bullet({ spaceship: this });
             this.create('bullets', bullet);
             this.shot = Date.now();

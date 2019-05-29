@@ -7,7 +7,7 @@ class Bullet {
             x: props.spaceship.position.x,
             y: props.spaceship.position.y
         };
-        this.speed = 5;
+        this.speed = 7;
         this.radius = 2;
         this.sound = playSound(laserBullet)
     }

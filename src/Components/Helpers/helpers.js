@@ -37,7 +37,6 @@ function collision(item1, item2){
 
 // Function for playing sounds
 export function playSound(soundFile){
-    console.log('Sound')
     let sound = new Audio(soundFile);
     if (soundFile === space) {
         sound.loop = true;
