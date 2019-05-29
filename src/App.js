@@ -44,6 +44,7 @@ class App extends Component{
     window.addEventListener('resize', this.screenResize.bind(this, false));
 
     const context = this.refs.canvas.getContext('2d');
+
     this.setState({
       context: context
     });
@@ -89,19 +90,19 @@ class App extends Component{
     });
 
     this.createObject('galaxies', galaxy);
-  }
+  };
 
-  startGame = () => {
-    this.setState({
-      runningGame: true,
-      currentPoints: 0,
-      level: 1
+    startGame = () => {
+      this.setState({
+        runningGame: true,
+        currentPoints: 0,
+        level: 1
     });
 
     let spaceship = new Spaceship({
       position: {
         x: this.state.screen.width/2,
-        y: this.state.screen.height/1.2
+        y: this.state.screen.height/1.3
       },
       create: this.createObject.bind(this),
       die: this.gameOver.bind(this)
@@ -176,10 +177,10 @@ class App extends Component{
       this.makeAliens(newAliens);
       this.setState({
         level: this.state.level + 1
-      })
+      });
     };
 
-    this.updateObjects('galaxies', this.galaxies)
+    this.updateObjects('galaxies', this.galaxies);
     this.updateObjects('stars', this.stars);
     this.updateObjects('spaceship', this.spaceship);
     this.updateObjects('bullets', this.bullets);
@@ -205,7 +206,6 @@ class App extends Component{
     };
   };
   
-
   playAgain = () => {
     this.startGame();
   };
@@ -225,7 +225,7 @@ class App extends Component{
     if (this.state.currentPoints === 0) {
       message = 'You have got 0 points. You suck!!!';
     } else if (this.state.currentPoints >= this.state.highestPoints){
-      message = `Not too bad, you have got ${this.state.highestPoints}. Top score!!`
+      message = `Not too bad, you have got ${this.state.highestPoints} points. Top score!!`
     } else {
       message = 'You can do better than that!!'
     }

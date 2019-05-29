@@ -6,8 +6,8 @@ class Alien {
     constructor(props){
         this.position = props.position;
         this.speed = {
-            x: randomNumber(-7, 7),
-            y: randomNumber(-7, 7)
+            x: randomNumber(-5, 5),
+            y: randomNumber(-5, 5)
         };
         this.create = props.create;
         this.radius = 27;
