@@ -232,9 +232,9 @@ class App extends Component{
 
     if (!this.state.runningGame){
       gameOver = <div className = 'game-over'>
-                  <p>Game Over</p>
-                  <p>{message}</p>
-                  <button onClick = {this.playAgain}>Play!!!</button>
+                    <p>Game Over</p>
+                    <p>{message}</p>
+                    <button onClick = {this.playAgain}>Play!!!</button>
                   </div>
     }
     return(

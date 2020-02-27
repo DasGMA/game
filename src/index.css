@@ -54,11 +54,13 @@ canvas {
   color: white;
   position: absolute;
   z-index: 1;
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 100;
-  left: 39%;
-  top: 40%;
-  text-align: center;
+  left: 0;
+  top: 25%;
+  right: 0;
+  bottom: 0;
+  text-align: center
 }
 
 button {
