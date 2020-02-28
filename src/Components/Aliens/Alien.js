@@ -9,7 +9,6 @@ class Alien {
             x: randomNumber(-5, 5),
             y: randomNumber(-5, 5)
         };
-        this.create = props.create;
         this.radius = 27;
         this.points = Math.abs(this.speed.x * this.speed.y * 5);
         this.addPoints = props.addPoints;

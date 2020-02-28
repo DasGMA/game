@@ -40,7 +40,7 @@ export function playSound(soundFile){
     let sound = new Audio(soundFile);
     if (soundFile === space) {
         sound.loop = true;
-        sound.volume = 0.5;
+        sound.volume = 0.3;
     }   
     return sound.play();
 };

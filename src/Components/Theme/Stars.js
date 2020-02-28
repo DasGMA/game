@@ -1,8 +1,7 @@
 class Star {
     constructor(props){
         this.position = props.position;
-        this.speed = 0.1;
-        this.create = props.create;
+        this.speed = 0.2;
     }
 
     render(state){

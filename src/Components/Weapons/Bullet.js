@@ -9,7 +9,7 @@ class Bullet {
         };
         this.speed = 7;
         this.radius = 2;
-        this.sound = playSound(laserBullet)
+        this.sound = playSound(laserBullet);
     }
 
     destroy(){

@@ -70,7 +70,7 @@ class App extends Component{
     });
   };
 
-  handleDirections(value, event){
+  handleDirections(value, event) {
     let keys = this.state.keys;
 
     if (event.keyCode === KEYS.UP || event.keyCode === KEYS.W) keys.up = value;
@@ -86,7 +86,7 @@ class App extends Component{
 
   createGalaxy = () => {
     let galaxy = new Galaxy({
-      create: this.createObject.bind(this)
+      //create: this.createObject.bind(this)
     });
 
     this.createObject('galaxies', galaxy);
@@ -104,8 +104,8 @@ class App extends Component{
         x: this.state.screen.width/2,
         y: this.state.screen.height/1.3
       },
-      create: this.createObject.bind(this),
-      die: this.gameOver.bind(this)
+      create: this.createObject,
+      die: this.gameOver
     });
 
     this.aliens = [];
@@ -122,28 +122,26 @@ class App extends Component{
         position: {
           x: randomNumber(0, this.state.screen.width),
           y: randomNumber(0, this.state.screen.height)
-        },
-        create: this.createObject.bind(this),
+        }
       });
       this.createObject('stars', star);
     };
   }
 
-  makeAliens(numberValue){
+  makeAliens = (numberValue) => {
     for (let i = 0; i < numberValue; i++){
       let alien = new Alien({
         position: {
           x: randomNumber(0, this.state.screen.width),
           y: randomNumber(0, this.state.screen.height)
         },
-        create: this.createObject.bind(this),
-        addPoints: this.addPoints.bind(this)
+        addPoints: this.addPoints
       });
       this.createObject('aliens', alien);
     };
   };
 
-  gameOver() {
+  gameOver = () => {
     this.setState({
       runningGame: false
     });
@@ -155,7 +153,7 @@ class App extends Component{
     }
   };
 
-  createObject (group, item) {
+  createObject = (group, item) => {
     this[group].push(item);
   }
 
@@ -194,7 +192,7 @@ class App extends Component{
 
   // Checking objects. If object contains destroy() then updating by removing it.
   // Otherwise rendering
-  updateObjects(group, items){
+  updateObjects = (group, items) => {
     let index = 0;
     for (let item of items){
       if (item.delete){
@@ -210,7 +208,7 @@ class App extends Component{
     this.startGame();
   };
 
-  addPoints(points) {
+  addPoints = (points) => {
     if (this.state.runningGame){
       this.setState({
         currentPoints: this.state.currentPoints + points,
@@ -225,7 +223,7 @@ class App extends Component{
     if (this.state.currentPoints === 0) {
       message = 'You have got 0 points. You suck!!!';
     } else if (this.state.currentPoints >= this.state.highestPoints){
-      message = `Not too bad, you have got ${this.state.highestPoints} points. Top score!!`
+      message = `Not bad! ${this.state.highestPoints} points. Top score!!`
     } else {
       message = 'You can do better than that!!'
     }
@@ -234,7 +232,7 @@ class App extends Component{
       gameOver = <div className = 'game-over'>
                     <p>Game Over</p>
                     <p>{message}</p>
-                    <button onClick = {this.playAgain}>Play!!!</button>
+                    <button onClick = {this.playAgain}>Play again!!!</button>
                   </div>
     }
     return(
